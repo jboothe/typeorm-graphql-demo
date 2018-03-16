@@ -1,10 +1,10 @@
-# graphql-node-seed
-A GraphQL Node Server Seed based on TypeScript and graphql-yoga
+# typeorm-graphql-demo
+A GraphQL Node Server based on `typeorm`, `graphql-yoga` using TypeScript
 ## Get Started
 - Clone this repo
-`git clone https://github.com/jboothe/graphql-node-seed.git`
+`git clone https://github.com/jboothe/typeorm-graphql-demo.git`
 - cd into the project
-`cd graphql-node-seed`
+`cd typeorm-graphql-demo`
 - npm install
 - npm start
 - Open http://localhost:4000

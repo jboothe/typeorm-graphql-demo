@@ -1,0 +1,24 @@
+import {Entity, PrimaryGeneratedColumn, Column, BaseEntity} from "typeorm";
+
+@Entity()
+export class User extends BaseEntity {
+
+    @PrimaryGeneratedColumn()
+    id: number;
+
+    @Column()
+    firstName: string;
+
+    @Column()
+    lastName: string;
+
+    @Column({ type: "varchar", length: "100", unique: true })
+    email: string;
+
+    @Column({ type: "tinyint", length: "1",  default: false })
+    confirm: boolean;
+    
+    @Column({ type: "tinyint", length: "3" })
+    age: boolean;
+    
+}

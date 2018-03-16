@@ -1,0 +1,14 @@
+ormconfig.json
+.idea/
+.vscode/
+node_modules/
+build/
+tmp/
+temp/
+.env*
+dist
+package-lock.json
+node_modules
+.idea
+.vscode
+*.lognode_modules

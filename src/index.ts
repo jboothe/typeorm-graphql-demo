@@ -1,20 +1,25 @@
 import "reflect-metadata";
-import { createConnection, getConnection } from "typeorm";
+// import { createConnection, getConnection } from "typeorm";
 import { IResolvers } from "graphql-yoga/dist/src/types";
 import { GraphQLServer } from "graphql-yoga";
 
-const resolvers = require("./resolvers");
-const typeDefs = require("./typeDefs");
-console.log("resolvers", resolvers);
-console.log("typeDefs", typeDefs);
+import * as path from "path";
+import { fileLoader, mergeTypes, mergeResolvers } from "merge-graphql-schemas";
+const typesArray = fileLoader(path.join(__dirname, "./typeDefs"));
+const typesMerged = mergeTypes(typesArray, { all: false });
+const resolversArray = fileLoader(path.join(__dirname, "./resolvers"))
+const resolvers = mergeResolvers(resolversArray);
 
 const server = new GraphQLServer({
-  typeDefs: typeDefs, //  "./src/schema.graphql",
+  typeDefs: typesMerged, //  "./src/schema.graphql",
   resolvers
 });
-createConnection().then(() => {
-  server.start(() => console.log("Server is running on localhost:4000"));
-});
+
+server.start(() => console.log("Server is running on localhost:4000"));
+
+
+// createConnection().then(() => {
+// });
 
 // const resolvers: IResolvers = {
 //   Query: {
